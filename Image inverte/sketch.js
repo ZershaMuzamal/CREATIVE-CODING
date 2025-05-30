@@ -6,12 +6,15 @@ function preload() {
 
 function setup() {
   createCanvas(400, 400);
-  noLoop(); // Draw only once since image and filters are static
+  noStroke();
 }
 
 function draw() {
   background(0);
-  image(img, 0, 0, width, height); // Display image at full canvas size
-  filter(POSTERIZE, 3);            // Reduce color detail
-  filter(INVERT);                  // Invert the colors
+  image(img, 0, 0); // Display image
+
+  let sampledColor = get(mouseX, mouseY); // Sample color at mouse position
+  fill(sampledColor);
+  ellipse(mouseX, mouseY, 100); // Draw colored circle at mouse
 }
+
